@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统">
+  <meta name="description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装">
 <meta name="keywords" content="Redis 缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis安装及使用">
 <meta property="og:url" content="https://wonder-code.github.io/2019/06/22/redis进阶/index.html">
 <meta property="og:site_name" content="小码头">
-<meta property="og:description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统">
+<meta property="og:description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-1.PNG">
 <meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-2.PNG">
@@ -110,10 +110,10 @@
 <meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-4.PNG">
 <meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-5.PNG">
 <meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-6.PNG">
-<meta property="og:updated_time" content="2019-06-23T07:56:59.896Z">
+<meta property="og:updated_time" content="2019-06-23T08:01:31.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis安装及使用">
-<meta name="twitter:description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统">
+<meta name="twitter:description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装">
 <meta name="twitter:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-1.PNG">
 
 
@@ -395,7 +395,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-23 15:56:59" itemprop="dateModified" datetime="2019-06-23T15:56:59+08:00">2019-06-23</time>
+                <time title="修改时间：2019-06-23 16:01:31" itemprop="dateModified" datetime="2019-06-23T16:01:31+08:00">2019-06-23</time>
               
             
           </span>
@@ -449,7 +449,8 @@
       
         <p>在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。</p>
 <h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><h3 id="Windows环境下安装"><a href="#Windows环境下安装" class="headerlink" title="Windows环境下安装"></a>Windows环境下安装</h3><p>安装教程：<a href="https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html</a></p>
-<h3 id="Linux环境下安装"><a href="#Linux环境下安装" class="headerlink" title="Linux环境下安装"></a>Linux环境下安装</h3><p>Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统来安装Redis并学习其基本使用方法。<br><strong>首先去官网下载Redis</strong><br>官方网站：<a href="http://redis.io/" target="_blank" rel="noopener">http://redis.io/</a><br>官方下载：<a href="http://redis.io/download" target="_blank" rel="noopener">http://redis.io/download</a> <em>可根据需要下载不同版本</em><br>我下载的是4.0版本</p>
+<h3 id="Linux环境下安装"><a href="#Linux环境下安装" class="headerlink" title="Linux环境下安装"></a>Linux环境下安装</h3><a id="more"></a>
+<p>Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统来安装Redis并学习其基本使用方法。<br><strong>首先去官网下载Redis</strong><br>官方网站：<a href="http://redis.io/" target="_blank" rel="noopener">http://redis.io/</a><br>官方下载：<a href="http://redis.io/download" target="_blank" rel="noopener">http://redis.io/download</a> <em>可根据需要下载不同版本</em><br>我下载的是4.0版本</p>
 <img src="/images/Redis-pic/Redis2-1.PNG" class="redis2-1" width="700" height="500">
 <p><strong>Linux解压安装</strong><br>打开xftp传输工具将下载好的安装包复制到<code>/usr/local/</code>目录下</p>
 <img src="/images/Redis-pic/Redis2-2.PNG" class="redis2-2" width="700" height="500">
