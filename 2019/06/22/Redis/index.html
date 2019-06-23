@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis-1.png">
 <meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis-2.png">
-<meta property="og:updated_time" content="2019-06-22T04:57:52.468Z">
+<meta property="og:updated_time" content="2019-06-22T14:49:20.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Redis">
 <meta name="twitter:description" content="Hello Redis REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。 Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 它通常被称为数据结构服务器，因为值（value）可以是 字符串(Strin">
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2019-06-22 10:10:28 / 修改时间：12:57:52" itemprop="dateCreated datePublished" datetime="2019-06-22T10:10:28+08:00">2019-06-22</time>
+              <time title="创建时间：2019-06-22 10:10:28 / 修改时间：22:49:20" itemprop="dateCreated datePublished" datetime="2019-06-22T10:10:28+08:00">2019-06-22</time>
             
 
             
@@ -440,19 +440,17 @@
 </ul>
 <h2 id="Redis数据库"><a href="#Redis数据库" class="headerlink" title="Redis数据库"></a>Redis数据库</h2><p>我们知道Redis是一个数据库，而在工作中我们用的比较多的数据库有MySQL，Oracle，Sqlserver等，这些数据库都称为关系型数据库。而Redis则是一种非关系型数据库NOsql（not only SQL），被常用作缓存。</p>
 <ul>
-<li><p>关系型数据库，顾名思义就是数据库中表与表之间会具有一定的关联</p>
-</li>
-<li><p>非关系型数据库，则表明数据库中的数据之间没有任何关联，当然可以通过<strong>命名方式</strong>来人为地使数据之间具有一定的联系</p>
-<h3 id="为什么要使用Redis？"><a href="#为什么要使用Redis？" class="headerlink" title="为什么要使用Redis？"></a>为什么要使用Redis？</h3></li>
-<li><p>传统关系型数据库将数据直接存储在硬盘上进行读写，优点是数据安全性高，不易丢失。但处于高并发场景时，此类数据库将面临一个问题，同一条SQL语句被执行n次，而其返回给用户的结果却是相同的，这样岂不是让我们的数据库做了大量的无用功？就好比客户要知道你的仓库里有多少货，每一个客户问这个问题，你都要去仓库里将货物数一遍告诉用户，这样数货物的人是不是要累死。</p>
-<img src="/images/Redis-pic/Redis-1.png" class="redis-1"></li>
-<li><p>因此便引入了Redis缓存数据库，在早起开门的时候将货物的数量数一遍记录在小本本上，每个客户问的时候直接读取小本本上的数量，这样用户得到结果的速度变快了，不用频繁地数货物人也轻松了。Redis数据库则主要是从内存读取数据，而内存的读写速度比直接读写硬盘的速度高得多，因此它便用于数据缓存，将一些被经常访问的但是不经常被修改或者删除的数据进行存储。在业务层面可以提升用户的体验度，在技术层面Redis也大大地减轻的我们硬盘上数据库的读写压力。</p>
-<img src="/images/Redis-pic/Redis-2.png" class="redis-1">
+<li>关系型数据库，顾名思义就是数据库中表与表之间会具有一定的关联</li>
+<li>非关系型数据库，则表明数据库中的数据之间没有任何关联，当然可以通过<strong>命名方式</strong>来人为地使数据之间具有一定的联系</li>
+</ul>
+<h3 id="为什么要使用Redis？"><a href="#为什么要使用Redis？" class="headerlink" title="为什么要使用Redis？"></a>为什么要使用Redis？</h3><ul>
+<li>传统关系型数据库将数据直接存储在硬盘上进行读写，优点是数据安全性高，不易丢失。但处于高并发场景时，此类数据库将面临一个问题，同一条SQL语句被执行n次，而其返回给用户的结果却是相同的，这样岂不是让我们的数据库做了大量的无用功？就好比客户要知道你的仓库里有多少货，每一个客户问这个问题，你都要去仓库里将货物数一遍告诉用户，这样数货物的人是不是要累死。<img src="/images/Redis-pic/Redis-1.png" class="redis-1"></li>
+<li>因此便引入了Redis缓存数据库，在早起开门的时候将货物的数量数一遍记录在小本本上，每个客户问的时候直接读取小本本上的数量，这样用户得到结果的速度变快了，不用频繁地数货物人也轻松了。Redis数据库则主要是从内存读取数据，而内存的读写速度比直接读写硬盘的速度高得多，因此它便用于数据缓存，将一些被经常访问的但是不经常被修改或者删除的数据进行存储。在业务层面可以提升用户的体验度，在技术层面Redis也大大地减轻的我们硬盘上数据库的读写压力。<img src="/images/Redis-pic/Redis-2.png" class="redis-1">
 
-<h3 id="Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？"><a href="#Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？" class="headerlink" title="Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？"></a>Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？</h3></li>
-<li><p>Redis将数据存储在内存中进行读写操作，那么当机器断电，非正常关闭时，内存中的数据极有可能丢失。然而，它不仅仅可以进行内存读写，还提供了<a href="https://blog.csdn.net/a1007720052/article/details/79126253" target="_blank" rel="noopener">AOF和RDB</a>等持久化机制，写入内存中的数据在一定时间内将会保存进硬盘中，写入硬盘的频率以及存储的地址可以自行配置，将在下面讲解。</p>
-<h3 id="Redis到底能干啥？"><a href="#Redis到底能干啥？" class="headerlink" title="Redis到底能干啥？"></a>Redis到底能干啥？</h3><p>附上链接：<a href="https://blog.csdn.net/youanyyou/article/details/82177767" target="_blank" rel="noopener">Redis的8大应用场景！</a></p>
 </li>
+</ul>
+<h3 id="Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？"><a href="#Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？" class="headerlink" title="Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？"></a>Redis将数据存储在内存中，如果服务器宕机，数据安全性怎么保证？</h3><ul>
+<li>Redis将数据存储在内存中进行读写操作，那么当机器断电，非正常关闭时，内存中的数据极有可能丢失。然而，它不仅仅可以进行内存读写，还提供了<a href="https://blog.csdn.net/a1007720052/article/details/79126253" target="_blank" rel="noopener">AOF和RDB</a>等持久化机制，写入内存中的数据在一定时间内将会保存进硬盘中，写入硬盘的频率以及存储的地址可以自行配置，将在下面讲解。<h3 id="Redis到底能干啥？"><a href="#Redis到底能干啥？" class="headerlink" title="Redis到底能干啥？"></a>Redis到底能干啥？</h3>附上链接：<a href="https://blog.csdn.net/youanyyou/article/details/82177767" target="_blank" rel="noopener">Redis的8大应用场景！</a></li>
 </ul>
 
       
@@ -502,6 +500,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/22/redis进阶/" rel="prev" title="redis安装及使用">
+                redis安装及使用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -572,7 +574,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

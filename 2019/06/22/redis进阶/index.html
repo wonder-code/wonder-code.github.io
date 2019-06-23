@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统">
+<meta name="keywords" content="Redis 缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis安装及使用">
+<meta property="og:url" content="https://wonder-code.github.io/2019/06/22/redis进阶/index.html">
+<meta property="og:site_name" content="小码头">
+<meta property="og:description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-1.PNG">
+<meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-2.PNG">
+<meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-3.PNG">
+<meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-4.PNG">
+<meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-5.PNG">
+<meta property="og:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-6.PNG">
+<meta property="og:updated_time" content="2019-06-23T07:56:59.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis安装及使用">
+<meta name="twitter:description" content="在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。 Redis安装Windows环境下安装安装教程：https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html Linux环境下安装Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统">
+<meta name="twitter:image" content="https://wonder-code.github.io/images/Redis-pic/Redis2-1.PNG">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://wonder-code.github.io/2019/06/22/redis进阶/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>redis安装及使用 | 小码头</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小码头</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">愿我如星君如月，夜夜流光相皎洁。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wonder-code.github.io/2019/06/22/redis进阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.Zhang">
+      <meta itemprop="description" content="技术博客，Java，技术交流">
+      <meta itemprop="image" content="http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小码头">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redis安装及使用
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-22 15:16:51" itemprop="dateCreated datePublished" datetime="2019-06-22T15:16:51+08:00">2019-06-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-23 15:56:59" itemprop="dateModified" datetime="2019-06-23T15:56:59+08:00">2019-06-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在上一节中已经初步了解了Redis的作用以及为什么要使用Redis。下面开始学习如何安装使用Redis。</p>
+<h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><h3 id="Windows环境下安装"><a href="#Windows环境下安装" class="headerlink" title="Windows环境下安装"></a>Windows环境下安装</h3><p>安装教程：<a href="https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/0f5fb099045b056d8334ea97.html</a></p>
+<h3 id="Linux环境下安装"><a href="#Linux环境下安装" class="headerlink" title="Linux环境下安装"></a>Linux环境下安装</h3><p>Redis作为一个消息缓存中间件，是必定要部署在Linux服务器中的。因此我使用Centos7系统来安装Redis并学习其基本使用方法。<br><strong>首先去官网下载Redis</strong><br>官方网站：<a href="http://redis.io/" target="_blank" rel="noopener">http://redis.io/</a><br>官方下载：<a href="http://redis.io/download" target="_blank" rel="noopener">http://redis.io/download</a> <em>可根据需要下载不同版本</em><br>我下载的是4.0版本</p>
+<img src="/images/Redis-pic/Redis2-1.PNG" class="redis2-1" width="700" height="500">
+<p><strong>Linux解压安装</strong><br>打开xftp传输工具将下载好的安装包复制到<code>/usr/local/</code>目录下</p>
+<img src="/images/Redis-pic/Redis2-2.PNG" class="redis2-2" width="700" height="500">
+<p>打开<code>xshell</code>工具远程访问服务器，执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br></pre></td></tr></table></figure>
+
+<p>进入<code>local</code>目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll</span><br></pre></td></tr></table></figure>
+
+<p>查看当前目录下的文件</p>
+<img src="/images/Redis-pic/Redis2-3.PNG" class="redis2-3" width="700" height="500">
+<p>可以看到<code>redis-4.0.14.tar.gz</code>这个压缩文件，执行命令解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf redis-4.0.14.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>解压完成后在当前目录下使用<code>ll</code>命令可查看多出一个<code>redis-4.0.14</code>文件，这是Redis的安装文件。由于Redis是使用C语言编写的，要使其运行还需编译。执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /redis-4.0.14</span><br><span class="line">make MALLOC=libc</span><br></pre></td></tr></table></figure>
+
+<p>看到如下图所示，即编译成功</p>
+<img src="/images/Redis-pic/Redis2-4.PNG" class="redis2-4">
+<p>如果出错，执行以下命令安装gcc，编译C语言需依赖gcc环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc automake autoconf libtool make</span><br></pre></td></tr></table></figure>
+
+<p>接着，安装编译后的文件，执行命令,其中<code>/usr/local/redis</code>为安装后的文件位置，我们将其与Redis安装文件放在一起</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make PREFIX=/usr/local/redis install</span><br></pre></td></tr></table></figure>
+
+<p>此时，在<code>/usr/local/</code>目录下就存在Redis文件和redis-4.0.14这两个文件了，我们进入Redis文件中的bin目录查看文件</p>
+<img src="/images/Redis-pic/Redis2-5.PNG" class="redis2-5" width="700" height="500">
+<p>其中<code>redis-server</code>为Redis服务端启动程序，<code>redis-cli</code>为Redis客户端启动程序。此时Redis就已经安装完成了！</p>
+<h2 id="Redis启动"><a href="#Redis启动" class="headerlink" title="Redis启动"></a>Redis启动</h2><p>在启动前，先进入目录<code>/usr/local/redis-4.0.14</code>，发现此安装文件下有一个<code>redis-conf</code>文件，此文件为Redis的启动配置文件，我们需要将它复制到编译后的Redis安装文件中去。</p>
+<img src="/images/Redis-pic/Redis2-6.PNG" class="redis2-6" width="700" height="500">
+<p>在此目录下执行复制命令<code>cp redis.conf /usr/local/redis</code>，此时<code>/usr/local/redis</code>目录下就有了bin文件夹和redis.conf这两个文件了。<br>进入<code>/usr/local/redis</code>文件中bin目录执行<code>./redis-server ./redis.conf</code>命令启动Redis服务端，由于Redis默认不是以守护进程的方式运行，启动服务端后此命令窗口将被占用，我们启动或复制一个新的窗口用于启动Redis客户端，执行命令<code>./redis-cli -h ip地址 -p 端口号 -a 密码</code>，在本机运行可不写ip地址，端口号默认为6379，无密码可不写（redis3.0版本之后必须使用密码！）。<br>这样Redis不是以守护进程的方式运行，它将独占窗口使我们需要新打开窗口进行客户端的操作非常麻烦。这时我们可以对Redis进行相关的配置，即<code>redis-conf</code>这个文件。</p>
+<h2 id="Redis相关配置"><a href="#Redis相关配置" class="headerlink" title="Redis相关配置"></a>Redis相关配置</h2><p>进入<code>/usr/local/redis</code>目录编辑redis-conf文件，执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis</span><br><span class="line">vi redis-conf</span><br></pre></td></tr></table></figure>
+
+<p>按i进入文本编辑模式，修改完成后按ESC，输入:w保存不退出文件或输入:wq保存并退出</p>
+<p>redis-conf配置项说明如下:</p>
+<ol>
+<li><p>Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程<br> <code>daemonize no</code><br> Redis采用的是单进程多线程的模式。当redis.conf中选项daemonize设置成yes时，代表开启守护进程模式。在该模式下，redis会在后台运行，并将进程pid号写入至redis.conf选项pidfile设置的文件中，此时redis将一直运行，除非手动kill该进程。但当daemonize选项设置成no时，当前界面将进入redis的命令行界面，exit强制退出或者关闭连接工具(putty,xshell等)都会导致redis进程退出。服务端开发的大部分应用都是采用后台运行的模式。</p>
+</li>
+<li><p>当Redis以守护进程方式运行时，Redis默认会把pid写入/var/run/redis.pid文件，可以通过pidfile指定<br> <code>pidfile /var/run/redis.pid</code></p>
+</li>
+<li><p>指定Redis监听端口，默认端口为6379，为什么选用6379作为默认端口，因为6379在手机按键上MERZ对应的号码，而MERZ取自意大利歌女Alessia Merz的名字<br> <code>port 6379</code></p>
+</li>
+<li><p>绑定可访问的主机地址（一般需要将其注释，保证远程客户端可访问！！！）<br> <code>bind 127.0.0.1</code></p>
+</li>
+<li><p>当 客户端闲置多长时间后关闭连接，如果指定为0，表示关闭该功能<br>  <code>timeout 300</code></p>
+</li>
+<li><p>指定日志记录级别，Redis总共支持四个级别：debug、verbose、notice、warning，默认为verbose<br> <code>loglevel verbose</code></p>
+</li>
+<li><p>日志记录方式，默认为标准输出，如果配置Redis为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给/dev/null<br> <code>logfile stdout</code></p>
+</li>
+<li><p>设置数据库的总数量，默认数据库为0，可以使用SELECT <dbid>命令在连接上指定数据库id<br> <code>databases 16</code></dbid></p>
+</li>
+<li><p>指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合<br> <code>save &lt;seconds&gt; &lt;changes&gt;</code><br> Redis默认配置文件中提供了三个条件：<br> save 900 1<br> save 300 10<br> save 60 10000<br> 分别表示900秒（15分钟）内有1个更改，300秒（5分钟）内有10个更改以及60秒内有10000个更改。</p>
+</li>
+<li><p>指定存储至本地数据库时是否压缩数据，默认为yes，Redis采用LZF压缩，如果为了节省CPU时间，可以关闭该选项，但会导致数据库文件变的巨大<br><code>rdbcompression yes</code></p>
+</li>
+<li><p>指定本地数据库文件名，默认值为dump.rdb<br><code>dbfilename dump.rdb</code></p>
+</li>
+<li><p>指定本地数据库存放目录<br><code>dir ./</code></p>
+</li>
+<li><p>设置当本机为slav服务时，设置master服务的IP地址及端口，在Redis启动时，它会自动从master进行数据同步<br><code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code></p>
+</li>
+<li><p>当master服务设置了密码保护时，slav服务连接master的密码<br><code>masterauth &lt;master-password&gt;</code></p>
+</li>
+<li><p>设置Redis连接密码，如果配置了连接密码，客户端在连接Redis时需要通过AUTH <password>命令提供密码，默认关闭<br><code>requirepass foobared</code></password></p>
+</li>
+<li><p>设置同一时间最大客户端连接数，默认无限制，Redis可以同时打开的客户端连接数为Redis进程可以打开的最大文件描述符数，如果设置 maxclients 0，表示不作限制。当客户端连接数到达限制时，Redis会关闭新的连接并向客户端返回max number of clients reached错误信息<br><code>maxclients 128</code></p>
+</li>
+<li><p>指定Redis最大内存限制，Redis在启动时会把数据加载到内存中，达到最大内存后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理 后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis新的vm机制，会把Key存放内存，Value会存放在swap区<br><code>maxmemory &lt;bytes&gt;</code></p>
+</li>
+<li><p>指定是否在每次更新操作后进行日志记录，Redis在默认情况下是异步的把数据写入磁盘，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为 redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认为no<br><code>appendonly no</code></p>
+</li>
+<li><p>指定更新日志文件名，默认为appendonly.aof<br><code>appendfilename appendonly.aof</code></p>
+</li>
+<li><p>指定更新日志条件，共有3个可选值：<br>no：表示等操作系统进行数据缓存同步到磁盘（快）<br>always：表示每次更新操作后手动调用fsync()将数据写到磁盘（慢，安全）<br>everysec：表示每秒同步一次（折中，默认值）<br><code>appendfsync everysec</code></p>
+</li>
+<li><p>指定是否启用虚拟内存机制，默认值为no，简单的介绍一下，VM机制将数据分页存放，由Redis将访问量较少的页即冷数据swap到磁盘上，访问多的页面由磁盘自动换出到内存中（在后面的文章我会仔细分析Redis的VM机制）<br> <code>vm-enabled no</code></p>
+</li>
+<li><p>虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享<br> <code>vm-swap-file /tmp/redis.swap</code></p>
+</li>
+<li><p>将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的(Redis的索引数据 就是keys),也就是说,当vm-max-memory设置为0的时候,其实是所有value都存在于磁盘。默认值为0<br> <code>vm-max-memory 0</code></p>
+</li>
+<li><p>Redis swap文件分成了很多的page，一个对象可以保存在多个page上面，但一个page上不能被多个对象共享，vm-page-size是要根据存储的 数据大小来设定的，作者建议如果存储很多小对象，page大小最好设置为32或者64bytes；如果存储很大大对象，则可以使用更大的page，如果不 确定，就使用默认值<br> <code>vm-page-size 32</code></p>
+</li>
+<li><p>设置swap文件中的page数量，由于页表（一种表示页面空闲或使用的bitmap）是在放在内存中的，，在磁盘上每8个pages将消耗1byte的内存。<br> <code>vm-pages 134217728</code></p>
+</li>
+<li><p>设置访问swap文件的线程数,最好不要超过机器的核数,如果设置为0,那么所有对swap文件的操作都是串行的，可能会造成比较长时间的延迟。默认值为4<br> <code>vm-max-threads 4</code></p>
+</li>
+<li><p>设置在向客户端应答时，是否把较小的包合并为一个包发送，默认为开启<br><code>glueoutputbuf yes</code></p>
+</li>
+<li><p>指定在超过一定的数量或者最大的元素超过某一临界值时，采用一种特殊的哈希算法<br><code>hash-max-zipmap-entries 64</code><br><code>hash-max-zipmap-value 512</code></p>
+</li>
+<li><p>指定是否激活重置哈希，默认为开启<br><code>activerehashing yes</code></p>
+</li>
+<li><p>指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件<br><code>include /path/to/local.conf</code></p>
+</li>
+</ol>
+<h2 id="Redis中的内存维护策略"><a href="#Redis中的内存维护策略" class="headerlink" title="Redis中的内存维护策略"></a>Redis中的内存维护策略</h2><p>redis作为优秀的中间缓存件，时常会存储大量的数据，即使采取了集群部署来动态扩容，也应该即使的整理内存，维持系统性能。在redis中有两种解决方案，<br>一.为数据设置超时时间，</p>
+<p>二.采用LRU算法动态将不用的数据删除。内存管理的一种页面置换算法，对于在内存中但又不用的数据块（内存块）叫做LRU，操作系统会根据哪些数据属于LRU而将其移出内存而腾出空间来加载另外的数据。</p>
+<p><strong>Redis内存不足的缓存淘汰策略:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1. volatile-lru：设定超时时间的数据中,删除最不常使用的数据.</span><br><span class="line"></span><br><span class="line">2. allkeys-lru：查询所有的key中最近最不常使用的数据进行删除，这是应用最广泛的策略.</span><br><span class="line"></span><br><span class="line">3. volatile-random：在已经设定了超时的数据中随机删除.</span><br><span class="line"></span><br><span class="line">4. allkeys-random：查询所有的key,之后随机删除.</span><br><span class="line"></span><br><span class="line">5. volatile-ttl：查询全部设定超时时间的数据,之后排序,将马上将要过期的数据进行删除操作.</span><br><span class="line"></span><br><span class="line">6. noeviction：如果设置为该属性,则不会进行删除操作,如果内存溢出则报错返回.（Redis的默认属性）</span><br><span class="line"></span><br><span class="line">7. volatile-lfu：从所有配置了过期时间的键中驱逐使用频率最少的键</span><br><span class="line"></span><br><span class="line">8. allkeys-lfu：从所有键中驱逐使用频率最少的键</span><br></pre></td></tr></table></figure>
+
+<h2 id="Redis相关命令"><a href="#Redis相关命令" class="headerlink" title="Redis相关命令"></a>Redis相关命令</h2><ul>
+<li><a href="https://www.runoob.com/redis/redis-commands.html" target="_blank" rel="noopener">菜鸟教程-Redis命令</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Redis-缓存/" rel="tag"># Redis 缓存</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/22/Redis/" rel="next" title="初识Redis">
+                <i class="fa fa-chevron-left"></i> 初识Redis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg" alt="Mr.Zhang">
+            
+              <p class="site-author-name" itemprop="name">Mr.Zhang</p>
+              <div class="site-description motion-element" itemprop="description">技术博客，Java，技术交流</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis安装"><span class="nav-number">1.</span> <span class="nav-text">Redis安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows环境下安装"><span class="nav-number">1.1.</span> <span class="nav-text">Windows环境下安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux环境下安装"><span class="nav-number">1.2.</span> <span class="nav-text">Linux环境下安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis启动"><span class="nav-number">2.</span> <span class="nav-text">Redis启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis相关配置"><span class="nav-number">3.</span> <span class="nav-text">Redis相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis中的内存维护策略"><span class="nav-number">4.</span> <span class="nav-text">Redis中的内存维护策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis相关命令"><span class="nav-number">5.</span> <span class="nav-text">Redis相关命令</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Zhang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+
+</html>
+<script type="text/javascript" src="/js/clicklove.js"></script>
