@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="MarkDownMarkdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。大多数博客文章的编辑均采用markdown语言。">
-<meta name="keywords" content="MarkDown">
+  <meta name="description" content="学习心得线程终止的3种方法：stop(),interrupt(),使用标志位。 总结1.stop()方法会直接杀死线程不论执行到哪里，破坏了线程的安全性，已停止使用。 12345678910111213141516171819202122232425public class StopThread extends Thread&amp;#123;    public int i=0;    public i">
+<meta name="keywords" content="线程终止">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MarkDownCode语言的使用">
-<meta property="og:url" content="https://wonder-code.github.io/2019/06/18/MarkDownCode/index.html">
+<meta property="og:title" content="线程终止">
+<meta property="og:url" content="https://wonder-code.github.io/2019/12/29/线程终止/index.html">
 <meta property="og:site_name" content="小码头">
-<meta property="og:description" content="MarkDownMarkdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。大多数博客文章的编辑均采用markdown语言。">
+<meta property="og:description" content="学习心得线程终止的3种方法：stop(),interrupt(),使用标志位。 总结1.stop()方法会直接杀死线程不论执行到哪里，破坏了线程的安全性，已停止使用。 12345678910111213141516171819202122232425public class StopThread extends Thread&amp;#123;    public int i=0;    public i">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-22T02:45:56.976Z">
+<meta property="og:updated_time" content="2019-12-29T09:34:38.812Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MarkDownCode语言的使用">
-<meta name="twitter:description" content="MarkDownMarkdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。大多数博客文章的编辑均采用markdown语言。">
+<meta name="twitter:title" content="线程终止">
+<meta name="twitter:description" content="学习心得线程终止的3种方法：stop(),interrupt(),使用标志位。 总结1.stop()方法会直接杀死线程不论执行到哪里，破坏了线程的安全性，已停止使用。 12345678910111213141516171819202122232425public class StopThread extends Thread&amp;#123;    public int i=0;    public i">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://wonder-code.github.io/2019/06/18/MarkDownCode/">
+  <link rel="canonical" href="https://wonder-code.github.io/2019/12/29/线程终止/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>MarkDownCode语言的使用 | 小码头</title>
+  <title>线程终止 | 小码头</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wonder-code.github.io/2019/06/18/MarkDownCode/">
+    <link itemprop="mainEntityOfPage" href="https://wonder-code.github.io/2019/12/29/线程终止/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.Zhang">
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MarkDownCode语言的使用
+          <h1 class="post-title" itemprop="name headline">线程终止
 
               
             
@@ -389,24 +389,12 @@
                 
               
 
-              <time title="创建时间：2019-06-18 23:01:35" itemprop="dateCreated datePublished" datetime="2019-06-18T23:01:35+08:00">2019-06-18</time>
+              <time title="创建时间：2019-12-29 17:01:29 / 修改时间：17:34:38" itemprop="dateCreated datePublished" datetime="2019-12-29T17:01:29+08:00">2019-12-29</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-22 10:45:56" itemprop="dateModified" datetime="2019-06-22T10:45:56+08:00">2019-06-22</time>
               
             
           </span>
@@ -423,7 +411,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/博客语法/" itemprop="url" rel="index"><span itemprop="name">博客语法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/线程/" itemprop="url" rel="index"><span itemprop="name">线程</span></a></span>
 
                 
                 
@@ -465,60 +453,16 @@
       
 
       
-        <h2 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h2><p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。大多数博客文章的编辑均采用markdown语言。</p>
-<a id="more"></a>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>一到六级标题逐级递减，如上“标题”是二级标题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+        <h4 id="学习心得"><a href="#学习心得" class="headerlink" title="学习心得"></a>学习心得</h4><p>线程终止的3种方法：<code>stop()</code>,<code>interrupt()</code>,<code>使用标志位</code>。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>1.<code>stop()</code>方法会直接杀死线程不论执行到哪里，破坏了线程的安全性，<strong>已停止使用</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StopThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        i++;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        StopThread stopThread = <span class="keyword">new</span> StopThread();</span><br><span class="line">        stopThread.start();</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);		<span class="comment">//进入线程，执行i++</span></span><br><span class="line">        stopThread.stop();    <span class="comment">//立即打断线程</span></span><br><span class="line">        <span class="comment">//stopThread.interrupt();     //打断wait(),join(),sleep(),继续执行其他</span></span><br><span class="line">        <span class="keyword">while</span> (stopThread.isAlive())&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(stopThread.i+<span class="string">"***"</span>+stopThread.j);	<span class="comment">//输出 1***0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
+<p>2.<code>interrupt()</code>方法会打断当前等待或阻塞状态使线程继续执行，直至线程结束。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StopThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        i++;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        StopThread stopThread = <span class="keyword">new</span> StopThread();</span><br><span class="line">        stopThread.start();</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);		<span class="comment">//进入线程，执行i++</span></span><br><span class="line">        <span class="comment">//stopThread.stop();    //立即打断线程</span></span><br><span class="line">        stopThread.interrupt();     <span class="comment">//打断wait(),join(),sleep(),继续执行其他</span></span><br><span class="line">        <span class="keyword">while</span> (stopThread.isAlive())&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(stopThread.i+<span class="string">"***"</span>+stopThread.j);	<span class="comment">//输出 1***1,并抛出异常。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>显示效果如:<strong>这是加粗的文字</strong> <em>这是倾斜的文字</em> <strong><em>这是斜体加粗的文字</em></strong> <del>这是加删除线的文字</del></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;嵌套引用的内容</span><br><span class="line">&gt;&gt;&gt;嵌套嵌套引用的内容</span><br></pre></td></tr></table></figure>
+<p>3.<code>增加标志位方法</code>，标志位需使用<code>voliate</code>关键字修饰，保证多线程之间的可见性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StopThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> voliate <span class="keyword">boolean</span> falg = <span class="keyword">true</span>;	<span class="comment">//volicate保证多线程可见性</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(flag)&#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        StopThread stopThread = <span class="keyword">new</span> StopThread();</span><br><span class="line">        stopThread.start();</span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);		<span class="comment">//进入线程，执行i++</span></span><br><span class="line">        stopThread.falg = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (stopThread.isAlive())&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(stopThread.i+<span class="string">"***"</span>+stopThread.j);	<span class="comment">//输出 1***1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>这是引用的内容</p>
-<blockquote>
-<p>嵌套引用的内容</p>
-<blockquote>
-<p>嵌套嵌套引用的内容</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>三个或以上的“-”或者“*”可以组成分割线。</p>
-<hr>
-<hr>
-<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[链接名](链接地址)</span><br></pre></td></tr></table></figure>
-
-<p><a href="http://www.baidu.com" target="_blank" rel="noopener">我是一个百度链接</a><br><a href="https://www.taobao.com" target="_blank">淘宝</a><br>一些平台可能不支持新标签页打开链接，这时可用HTML语言中的a标签编写超链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;超链接地址&quot; target=&quot;_blank&quot;&gt;超链接名&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">示例</span><br><span class="line">&lt;a href=&quot;https://www.taobao.com&quot; target=&quot;_blank&quot;&gt;淘宝&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">- 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>姓名</th>
-<th align="center">技能</th>
-<th align="right">排行</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>刘备</td>
-<td align="center">哭</td>
-<td align="right">大哥</td>
-</tr>
-<tr>
-<td>关羽</td>
-<td align="center">打</td>
-<td align="right">二哥</td>
-</tr>
-<tr>
-<td>张飞</td>
-<td align="center">骂</td>
-<td align="right">三弟</td>
-</tr>
-</tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>基本上常用的就是这些啦，以后用到新的再更新！</p>
 
       
     </div>
@@ -545,7 +489,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/MarkDown/" rel="tag"># MarkDown</a>
+            <a href="/tags/线程终止/" rel="tag"># 线程终止</a>
           
         </div>
       
@@ -558,15 +502,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/12/29/线程状态/" rel="next" title="线程状态">
+                <i class="fa fa-chevron-left"></i> 线程状态
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/22/Redis/" rel="prev" title="初识Redis">
-                初识Redis <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -737,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MarkDown"><span class="nav-number">1.</span> <span class="nav-text">MarkDown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">2.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体"><span class="nav-number">3.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割线"><span class="nav-number">5.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超链接"><span class="nav-number">6.</span> <span class="nav-text">超链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">7.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#学习心得"><span class="nav-number">1.</span> <span class="nav-text">学习心得</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

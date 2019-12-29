@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="技术博客，Java，技术交流">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小码头">
-<meta property="og:url" content="https://wonder-code.github.io/categories/博客语法/index.html">
+  <meta name="description" content="JAVA运行时数据区线程共享区1.方法区存储类信息，常量，静态变量，编译后的代码。2.堆内存存放对象实例，堆内存满了则抛出OutOfMemoryError异常。 线程独占区1.虚拟机栈由多个栈帧组成，每个方法对应一个栈帧，栈帧包含：局部变量表，操作数栈，动态链接，方法返回地址等信息。栈内存最大为1M，超出则抛出StackOverflowError异常。2.本地方法栈存储虚拟机运行时的Native本">
+<meta name="keywords" content="java运行时数据区">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java运行时数据区">
+<meta property="og:url" content="https://wonder-code.github.io/2019/12/29/java运行时数据区/index.html">
 <meta property="og:site_name" content="小码头">
-<meta property="og:description" content="技术博客，Java，技术交流">
+<meta property="og:description" content="JAVA运行时数据区线程共享区1.方法区存储类信息，常量，静态变量，编译后的代码。2.堆内存存放对象实例，堆内存满了则抛出OutOfMemoryError异常。 线程独占区1.虚拟机栈由多个栈帧组成，每个方法对应一个栈帧，栈帧包含：局部变量表，操作数栈，动态链接，方法返回地址等信息。栈内存最大为1M，超出则抛出StackOverflowError异常。2.本地方法栈存储虚拟机运行时的Native本">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-29T09:34:12.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小码头">
-<meta name="twitter:description" content="技术博客，Java，技术交流">
+<meta name="twitter:title" content="java运行时数据区">
+<meta name="twitter:description" content="JAVA运行时数据区线程共享区1.方法区存储类信息，常量，静态变量，编译后的代码。2.堆内存存放对象实例，堆内存满了则抛出OutOfMemoryError异常。 线程独占区1.虚拟机栈由多个栈帧组成，每个方法对应一个栈帧，栈帧包含：局部变量表，操作数栈，动态链接，方法返回地址等信息。栈内存最大为1M，超出则抛出StackOverflowError异常。2.本地方法栈存储虚拟机运行时的Native本">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://wonder-code.github.io/categories/博客语法/">
+  <link rel="canonical" href="https://wonder-code.github.io/2019/12/29/java运行时数据区/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>分类: 博客语法 | 小码头</title>
+  <title>java运行时数据区 | 小码头</title>
   
 
 
@@ -181,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,7 +263,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -324,80 +326,211 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>博客语法<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wonder-code.github.io/2019/12/29/java运行时数据区/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.Zhang">
+      <meta itemprop="description" content="技术博客，Java，技术交流">
+      <meta itemprop="image" content="http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小码头">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/06/18/MarkDownCode/" itemprop="url">
-            
-              <span itemprop="name">MarkDownCode语言的使用</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">java运行时数据区
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-18T23:01:35+08:00" content="2019-06-18">
-          06-18
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-29 16:52:24 / 修改时间：17:34:12" itemprop="dateCreated datePublished" datetime="2019-12-29T16:52:24+08:00">2019-12-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java内存/" itemprop="url" rel="index"><span itemprop="name">java内存</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="JAVA运行时数据区"><a href="#JAVA运行时数据区" class="headerlink" title="JAVA运行时数据区"></a>JAVA运行时数据区</h3><h4 id="线程共享区"><a href="#线程共享区" class="headerlink" title="线程共享区"></a>线程共享区</h4><p><strong>1.方法区</strong><br>存储类信息，常量，静态变量，编译后的代码。<br><strong>2.堆内存</strong><br>存放对象实例，堆内存满了则抛出<code>OutOfMemoryError</code>异常。</p>
+<h4 id="线程独占区"><a href="#线程独占区" class="headerlink" title="线程独占区"></a>线程独占区</h4><p><strong>1.虚拟机栈</strong><br>由多个栈帧组成，每个方法对应一个栈帧，栈帧包含：局部变量表，操作数栈，动态链接，方法返回地址等信息。栈内存最大为<code>1M</code>，超出则抛出<code>StackOverflowError</code>异常。<br><strong>2.本地方法栈</strong><br>存储虚拟机运行时的<code>Native</code>本地方法，其作用同虚拟机栈。<br><strong>3.程序计数器</strong><br>记录当前执行字节码的位置，存储字节码指令地址，如果执行的是本地方法，则计数器值为空。当线程切换时，需通过程序计数器恢复执行顺序。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/java运行时数据区/" rel="tag"># java运行时数据区</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/04/sort/" rel="next" title="java实现8种排序算法">
+                <i class="fa fa-chevron-left"></i> java实现8种排序算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/29/线程状态/" rel="prev" title="线程状态">
+                线程状态 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -417,8 +550,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -524,6 +666,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA运行时数据区"><span class="nav-number">1.</span> <span class="nav-text">JAVA运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程共享区"><span class="nav-number">1.1.</span> <span class="nav-text">线程共享区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程独占区"><span class="nav-number">1.2.</span> <span class="nav-text">线程独占区</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -681,6 +840,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -696,6 +859,8 @@
 
   
 
+
+  
 
 
   
